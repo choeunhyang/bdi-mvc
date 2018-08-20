@@ -12,6 +12,7 @@
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
+					<td>번호</td>
 					<td>이름</td>
 					<td>나이</td>
 				</tr>
@@ -22,6 +23,7 @@
 					for (int i = 0; i < list.size(); i++) {
 				%>
 				<tr>
+					<td><%=list.get(i).get("num")%></td>
 					<td><%=list.get(i).get("name")%></td>
 					<td><%=list.get(i).get("age")%></td>
 				</tr>
