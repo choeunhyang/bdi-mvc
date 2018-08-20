@@ -20,7 +20,6 @@
 				<%
 					List<Map<String, String>> list = (List<Map<String, String>>) request.getAttribute("list");
 					for (int i = 0; i < list.size(); i++) {
-						//out.println(list.get(i).get("name"));
 				%>
 				<tr>
 					<td><%=list.get(i).get("name")%></td>
