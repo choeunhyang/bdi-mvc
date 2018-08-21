@@ -14,5 +14,14 @@ public class DelServiceImpl implements DelService {
 	public List<Map<String, String>> getDelList() throws SQLException {
 		return ddao.selectDelList();
 	}
+	@Override
+	public Map<String, String> getDel(int num) throws SQLException {
+		return ddao.selectDel(num);
+	}
+	@Override
+	public List<Map<String, String>> deleteDels(String[] nums) throws SQLException {
+		int cnt = ddao.deleteDels(nums);
+		return ddao.selectDelList();
+	}
 
 }

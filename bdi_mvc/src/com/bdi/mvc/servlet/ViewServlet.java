@@ -17,9 +17,8 @@ public class ViewServlet extends HttpServlet {
 		String uri = "/WEB-INF" + request.getRequestURI() + ".jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(uri);
 		rd.forward(request, response);
-		/*
 		response.setContentType("text/html; charset=utf-8");
-		PrintWriter pw = response.getWriter();
+		/*PrintWriter pw = response.getWriter();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		pw.println("니가 가게될 JSP : "+uri);
 		pw.println("<br>enter!");

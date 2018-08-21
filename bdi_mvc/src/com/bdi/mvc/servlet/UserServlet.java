@@ -23,12 +23,31 @@ public class UserServlet extends HttpServlet {
 	private DelService ds = new DelServiceImpl();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = "/views"+request.getRequestURI();
-		List<Map<String, String>> list;
+		String cmd = uri.substring(uri.lastIndexOf("/")+1);
+//		List<Map<String, String>> list;
 		try {
-			list = ds.getDelList();
+			if(cmd.equals("userList")) {
+			List<Map<String, String>> list = ds.getDelList();
 			request.setAttribute("list", list);
+			}else if(cmd.equals("userView")) {
+				int num = Integer.parseInt(request.getParameter("num"));
+				request.setAttribute("user", ds.getDel(num));
+			}else if(cmd.equals("userInsert")) {
+				
+			}else if(cmd.equals("userUpdate")) {
+				
+			}else if(cmd.equals("userDelete")) {
+				String[] nums = request.getParameterValues("num");
+				/*for(String num:nums) {
+					System.out.println(num);
+				}*/
+				List<Map<String,String>>list = ds.deleteDels(nums);
+				request.setAttribute("list", list);
+				uri = "/user/userList";
+			}else {
+				
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		/*List<Map<String,String>> list = new ArrayList<Map<String,String>>();
