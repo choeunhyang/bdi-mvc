@@ -79,4 +79,10 @@ public class DelDAOImpl implements DelDAO {
 		return 0;
 	}
 
+	@Override
+	public int insertDels(String[] nume, String age) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -6,11 +6,11 @@
 		<table class="table table-bordered">
 			<tr>
 				<th>이름</th>
-				<td><input type="text" name="name"></td>
+				<td><input type="text" id="name"></td>
 			</tr>
 			<tr>
 				<th>나이</th>
-				<td><input type="number" name="age"></td>
+				<td><input type="number" id="age"></td>
 			</tr>
 			<tr>
 				<th colspan="2"><button onclick="insertDel()">등록</button>
@@ -20,10 +20,19 @@
 	</div>
 	<script>
 		function insertDel(){
-			
+			var name = document.querySelectorAll("#name").value;
+			var age = document.querySelectorAll("#age").value;
+			location.href='/user/userList?name='+name+'&age='+age;
 		}
 		function goPage(){
 			location.href='/user/userList';
+		}
+		var cnt='${cnt}';
+		if(cnt==1){
+			alert('등록이 잘 되었습니디');
+			goPage();
+		}else if(cnt===0){
+			alert('등록이 실패하셨습니다.');
 		}
 	</script>
 </body>
