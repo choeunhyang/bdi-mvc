@@ -16,7 +16,16 @@
 				</tr>
 			</thead>
 			<tbody>
-			
+			<c:forEach items="${list}" var="m">
+				<tr>
+					<td>${m.mnum}</td>
+					<td>${m.mname}</td>
+					<td>${m.mprice}</td>
+					<td>${m.mcnt}</td>
+					<td>${m.mtotal}</td>
+					<td>${m.mdesc}</td>
+				</tr>
+			</c:forEach>
 			</tbody>
 		</table>
 	</div>
