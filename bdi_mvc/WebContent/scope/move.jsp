@@ -9,10 +9,10 @@
 <%@ include file="/WEB-INF/views/common/common.jsp"%>
 <%
 List<Maker> makerList = new ArrayList<Maker>();
-Maker m = new Maker(1,"갤5",10000,1,0,"갤럭시 5번째");
+Maker m = new Maker(1,"갤5",10000,8,0,"갤럭시 5번째");
 makerList.add(m);
-makerList.add(new Maker(2,"갤7",1000,11,0,"갤럭시 7번째"));
-makerList.add(new Maker(3,"V20",200,5,0,"브이이십"));
+makerList.add(new Maker(2,"갤7",400,11,0,"갤럭시 7번째"));
+makerList.add(new Maker(3,"V20",500,5,0,"브이이십"));
 request.setAttribute("list",makerList);
 RequestDispatcher rd = request.getRequestDispatcher("/scope/forward.jsp");
 rd.forward(request,response);
