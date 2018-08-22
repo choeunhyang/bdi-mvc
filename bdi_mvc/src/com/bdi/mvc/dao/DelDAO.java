@@ -8,5 +8,6 @@ public interface DelDAO {
 	public List<Map<String,String>> selectDelList()throws SQLException;
 	public Map<String,String> selectDel(int num) throws SQLException;
 	public int deleteDels(String[] nums) throws SQLException;
-	public int insertDels(String[] nume,String age) throws SQLException;
+	public int insertDel(String name,String age) throws SQLException;
+	public int updateDel(String name,String age,int num) throws SQLException;
 }

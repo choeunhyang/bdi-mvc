@@ -35,9 +35,15 @@ public class UserServlet extends HttpServlet {
 			}else if(cmd.equals("userInsert")) {
 				String name= request.getParameter("name");
 				String age= request.getParameter("age");
-				
+				request.setAttribute("cnt", ds.insertDel(name, age));
 			}else if(cmd.equals("userUpdate")) {
-				
+				String name = request.getParameter("name");
+				String age= request.getParameter("age");
+				int num= Integer.parseInt(request.getParameter("num"));
+				if(name!=null && age!=null) {
+					request.setAttribute("cnt", ds.updateDel(name, age, num));
+				}
+				request.setAttribute("user", ds.getDel(num));
 			}else if(cmd.equals("userDelete")) {
 				String[] nums = request.getParameterValues("num");
 				/*for(String num:nums) {
@@ -45,7 +51,7 @@ public class UserServlet extends HttpServlet {
 				}*/
 				List<Map<String,String>>list = ds.deleteDels(nums);
 				request.setAttribute("list", list);
-				uri = "/user/userList";
+				uri = "/views/user/userList";
 			}else {
 				
 			}

@@ -8,5 +8,6 @@ public interface DelService {
 	public List<Map<String,String>> getDelList() throws SQLException;
 	public Map<String,String> getDel(int num) throws SQLException;
 	public List<Map<String,String>> deleteDels(String[] nums) throws SQLException;
-	public int insertDel(String[] nume,String age) throws SQLException;
+	public int insertDel(String name,String age) throws SQLException;
+	public int updateDel(String name,String age, int num) throws SQLException;
 }

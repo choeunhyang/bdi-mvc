@@ -18,11 +18,17 @@
 				<td>${user.age}</td>
 			</tr>
 		</table>
-		<div><button onclick="goPage()">리스트 이동</button></div>
+		<div>
+			<button onclick="goPage()">리스트 이동</button>
+			<button onclick="goUpdate()">수정</button>
+		</div>
 	</div>
 <script>
 	function goPage(){
 		location.href="/user/userList";
+	}
+	function goUpdate(){
+		location.href="/user/userUpdate?num=${user.num}";
 	}
 </script>
 </body>

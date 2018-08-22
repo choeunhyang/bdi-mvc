@@ -80,9 +80,38 @@ public class DelDAOImpl implements DelDAO {
 	}
 
 	@Override
-	public int insertDels(String[] nume, String age) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertDel(String name, String age) throws SQLException {
+		try {
+			Connection con = DBCon.getCon();
+			String sql = "insert into del(name, age)";
+			sql += "values(?,?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, age);
+			return ps.executeUpdate();
+		}catch(SQLException e) {
+			throw e;
+		}finally {
+			DBCon.close();
+		}
+	}
+
+	@Override
+	public int updateDel(String name, String age, int num) throws SQLException {
+		try {
+			Connection con = DBCon.getCon();
+			String sql = "update del set name=?";
+			sql += " , age=? where num=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, age);
+			ps.setInt(3, num);
+			return ps.executeUpdate();
+		}catch(SQLException e) {
+			throw e;
+		}finally {
+			DBCon.close();
+		}
 	}
 
 }

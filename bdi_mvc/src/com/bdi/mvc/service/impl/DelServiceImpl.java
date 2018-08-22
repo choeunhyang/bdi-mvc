@@ -24,8 +24,12 @@ public class DelServiceImpl implements DelService {
 		return ddao.selectDelList();
 	}
 	@Override
-	public int insertDel(String[] nume, String age) throws SQLException {
-		return 0;
+	public int insertDel(String name, String age) throws SQLException {
+		return ddao.insertDel(name,age);
+	}
+	@Override
+	public int updateDel(String name, String age, int num) throws SQLException {
+		return ddao.updateDel(name,age,num);
 	}
 
 }
