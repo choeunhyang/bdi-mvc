@@ -15,6 +15,9 @@
 					<th>메이커설명</th>
 				</tr>
 			</thead>
+			<tbody>
+			
+			</tbody>
 		</table>
 	</div>
 </body>
