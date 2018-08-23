@@ -43,7 +43,7 @@
 	</div>
 <script>
 	function move(){
-		location.href="/views/user/userInsert";
+		location.href="/user/userInsert";
 	}
 	function goPage(e,num){
 		/* alert(num); // 그냥 확인용*/
