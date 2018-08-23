@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/common.jsp"%>
 <body>
-	${user}
+	<%-- ${user} --%>
 	<div class="container">
 		<table class="table table-bordered table-hover">
 			<tr>
