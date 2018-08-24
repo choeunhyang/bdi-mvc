@@ -22,7 +22,7 @@
 			<c:forEach items="${list}" var="m">
 				<tr>
 					<td>${m.mnum}</td>
-					<td><a href="/maker/makerView?mName=${m.mnum}">${m.mname}</a></td>
+					<td><a href="/maker/makerView?mNum=${m.mnum}">${m.mname}</a></td>
 					<td>${m.mprice}</td>
 					<td>${m.mcnt}</td>
 					<td>${m.mprice*m.mcnt}</td>
@@ -31,9 +31,17 @@
 			</c:forEach>
 			</tbody>
 		</table>
+		<div>
+			<button onclick="makerInsert()">메이커등록</button>
+		</div>
 		<!-- <div>
 			<button align="center">삭제</button>
 		</div> -->
 	</div>
 </body>
+<script>
+	function makerInsert(){
+		location.href='/views/maker/makerInsert';
+	}
+</script>
 </html>

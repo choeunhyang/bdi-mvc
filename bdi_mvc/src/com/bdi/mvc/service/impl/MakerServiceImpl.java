@@ -1,5 +1,6 @@
 package com.bdi.mvc.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,14 +18,19 @@ public class MakerServiceImpl implements MakerService {
 
 	@Override
 	public Maker getMaker(int mNum) {
-		// TODO Auto-generated method stub
-		return null;
+		return mdao.selectMaker(mNum);
 	}
 
 	@Override
 	public Map<String, Object> insertMaker(Maker mk) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> rMap = new HashMap<String, Object>();
+		rMap.put("msg", "메이커 등록 오류!");
+		rMap.put("msg", "false");
+		if(mdao.insertMaker(mk)==1) {
+			rMap.put("msg", "정상적으로 등록 되었습니다.");
+			rMap.put("success","true");
+		}
+		return rMap;
 	}
 
 	@Override

@@ -29,7 +29,7 @@
 		}
 		var cnt='${cnt}';
 		if(cnt==1){
-			alert('등록이 잘 되었습니디');
+			alert('등록이 잘 되었습니다.');
 			goPage();
 		}else if(cnt===0){
 			alert('등록이 실패하셨습니다.');
