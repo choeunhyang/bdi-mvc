@@ -120,14 +120,27 @@ public class MakerDAOImpl implements MakerDAO {
 
 	@Override
 	public Map<String, Object> updateMaker(Maker mk) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Map<String, Object> deleteMaker(Maker mk) {
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int updateMakerTotal(int mNum) {
+		Connection con = DBCon.getCon();
+		String sql = "update maker set mTotal = mCnt * mPrice where mNum=(select max(mNum) from maker)";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			return ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBCon.close();
+		}
+		return 0;
 	}
 
 }

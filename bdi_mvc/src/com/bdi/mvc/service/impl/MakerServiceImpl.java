@@ -25,18 +25,19 @@ public class MakerServiceImpl implements MakerService {
 	public Map<String, Object> insertMaker(Maker mk) {
 		Map<String, Object> rMap = new HashMap<String, Object>();
 		rMap.put("msg", "메이커 등록 오류!");
-		rMap.put("msg", "false");
+		rMap.put("success", "false");
 		if(mdao.insertMaker(mk)==1) {
-			rMap.put("msg", "정상적으로 등록 되었습니다.");
-			rMap.put("success","true");
+			if(mdao.updateMakerTotal(mk.getMnum())==1) {
+				rMap.put("msg", "정상적으로 등록 되었습니다.");
+				rMap.put("success","true");
+			}
 		}
 		return rMap;
 	}
 
 	@Override
 	public Map<String, Object> updateMaker(Maker mk) {
-		// TODO Auto-generated method stub
-		return null;
+		return mdao.updateMaker(mk);
 	}
 
 	@Override
