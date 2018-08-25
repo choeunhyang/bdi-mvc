@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/common.jsp"%>
+<c:if test="${!empty rMap}">
+<script>
+	alert('${rMap.msg}');
+	if('${rMap.success}'=='true'){
+		location.href='views/maker/makerViews';
+	}
+</script>
+</c:if>
 <body>
 	<%-- ${maker} --%>
 	<div class="container">
@@ -33,11 +41,12 @@
 			</tr>
 			<%-- </c:forEach> --%>
 		</table>
-		<div style="text-align:center;">
-			<button data-page='/maker/makerUpdate?mNum=${maker.mnum}'>메이커수정</button>
-			<button data-page='/maker/makerList'>돌아가기</button>
-			<%-- <button data-page='/maker/makerDelete?mNum=${maker.mnum}'>메이커삭제</button> --%>
-		</div>
+		<form action="/maker/makerDelete" method="post" style="text-align:center;">
+			<button type="button" data-page='/maker/makerUpdate?mNum=${maker.mnum}'>메이커수정</button>
+			<button type="button" data-page='/maker/makerList'>돌아가기</button>
+			<button>메이커삭제</button>
+			<input type="hidden" name="mNum" value="${maker.mnum}">
+		</form>
 	</div>
 </body>
 </html>

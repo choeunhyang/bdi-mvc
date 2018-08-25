@@ -119,7 +119,7 @@ public class MakerDAOImpl implements MakerDAO {
 	}
 
 	@Override
-	public Map<String, Object> updateMaker(Maker mk) {
+	public int updateMaker(Maker mk) {
 		Connection con = DBCon.getCon();
 		PreparedStatement ps = null;
 		String sql = "update maker set "
@@ -131,7 +131,7 @@ public class MakerDAOImpl implements MakerDAO {
 			ps.setInt(3, mk.getMcnt());
 			ps.setString(4, mk.getMdesc());
 			ps.setInt(5, mk.getMnum());
-			/*return ps.executeUpdate();*/
+			return ps.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -144,20 +144,16 @@ public class MakerDAOImpl implements MakerDAO {
 			}
 			DBCon.close();
 		}
-		return null;
+		return 0;
 	}
 
 	@Override
-	public Map<String, Object> deleteMaker(Maker mk) {
-		return null;
-	}
-
-	@Override
-	public int updateMakerTotal(int mNum) {
+	public int deleteMaker(Maker mk) {
 		Connection con = DBCon.getCon();
-		String sql = "update maker set mTotal = mCnt * mPrice where mNum=(select max(mNum) from maker)";
+		String sql = "delete from maker where mNum=? ";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,mk.getMnum());
 			return ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -167,4 +163,20 @@ public class MakerDAOImpl implements MakerDAO {
 		return 0;
 	}
 
+	@Override
+	public int updateMakerTotal(int mNum) {
+		Connection con = DBCon.getCon();
+		/*String sql = "update maker set mTotal = mCnt * mPrice where mNum=(select max(mNum) from maker)";*/
+		String sql = "update maker set mTotal = mCnt * mPrice where mNum=?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,mNum);
+			return ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBCon.close();
+		}
+		return 0;
+	}
 }

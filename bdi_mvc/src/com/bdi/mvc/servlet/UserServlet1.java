@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bdi.mvc.service.DelService;
 import com.bdi.mvc.service.impl.DelServiceImpl;
 
-public class UserServlet extends HttpServlet {
+public class UserServlet1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private DelService ds = new DelServiceImpl();

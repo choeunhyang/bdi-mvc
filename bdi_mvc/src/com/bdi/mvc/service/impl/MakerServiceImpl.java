@@ -11,6 +11,7 @@ import com.bdi.mvc.vo.Maker;
 
 public class MakerServiceImpl implements MakerService {
 	private MakerDAO mdao = new MakerDAOImpl();
+
 	@Override
 	public List<Maker> getMakerList(Maker mk) {
 		return mdao.selectMakerList(mk);
@@ -26,10 +27,10 @@ public class MakerServiceImpl implements MakerService {
 		Map<String, Object> rMap = new HashMap<String, Object>();
 		rMap.put("msg", "메이커 등록 오류!");
 		rMap.put("success", "false");
-		if(mdao.insertMaker(mk)==1) {
-			if(mdao.updateMakerTotal(mk.getMnum())==1) {
+		if (mdao.insertMaker(mk) == 1) {
+			if (mdao.updateMakerTotal(mk.getMnum()) == 1) {
 				rMap.put("msg", "정상적으로 등록 되었습니다.");
-				rMap.put("success","true");
+				rMap.put("success", "true");
 			}
 		}
 		return rMap;
@@ -37,13 +38,14 @@ public class MakerServiceImpl implements MakerService {
 
 	@Override
 	public Map<String, Object> updateMaker(Maker mk) {
+		int cnt = mdao.updateMaker(mk);
 		Map<String, Object> rMap = new HashMap<String, Object>();
-		rMap.put("msg", "메이커 수정 오류!");
+		rMap.put("msg", "수정 실패!");
 		rMap.put("success", "false");
-		if(mdao.insertMaker(mk)==1) {
-			if(mdao.updateMakerTotal(mk.getMnum())==1) {
+		if (cnt == 1) {
+			if (mdao.updateMakerTotal(mk.getMnum()) == 1) {
 				rMap.put("msg", "정상적으로 수정 되었습니다.");
-				rMap.put("success","true");
+				rMap.put("success", "true");
 			}
 		}
 		return rMap;
@@ -51,8 +53,15 @@ public class MakerServiceImpl implements MakerService {
 
 	@Override
 	public Map<String, Object> deleteMaker(Maker mk) {
-		// TODO Auto-generated method stub
-		return null;
+		int cnt = mdao.deleteMaker(mk);
+		Map<String, Object> rMap = new HashMap<String, Object>();
+		rMap.put("msg", "삭제 실패!");
+		rMap.put("success", "false");
+		if (cnt == 1) {
+			rMap.put("msg", "정상적으로 삭제 되었습니다.");
+			rMap.put("success", "true");
+		}
+		return rMap;
 	}
 
 }

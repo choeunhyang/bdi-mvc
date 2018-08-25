@@ -4,6 +4,14 @@
 <style>
 	th,td{text-align:center;}
 </style>
+<c:if test="${!empty rMap}">
+<script>
+	alert('${rMap.msg}');
+	if('${rMap.success}'=='true'){
+		location.href='/maker/makerList';
+	}
+</script>
+</c:if>
 <body>
 	<div class="container">
 		<h4 align="center">메이커리스트</h4>
@@ -25,7 +33,7 @@
 					<td><a href="/maker/makerView?mNum=${m.mnum}">${m.mname}</a></td>
 					<td>${m.mprice}</td>
 					<td>${m.mcnt}</td>
-					<td>${m.mtotal}</td>
+					<td><%-- ${m.mprice*m.mcnt} --%>${m.mtotal}</td>
 					<td>${m.mdesc}</td>
 				</tr>
 			</c:forEach>
