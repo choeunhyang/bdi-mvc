@@ -37,7 +37,16 @@ public class MakerServiceImpl implements MakerService {
 
 	@Override
 	public Map<String, Object> updateMaker(Maker mk) {
-		return mdao.updateMaker(mk);
+		Map<String, Object> rMap = new HashMap<String, Object>();
+		rMap.put("msg", "메이커 수정 오류!");
+		rMap.put("success", "false");
+		if(mdao.insertMaker(mk)==1) {
+			if(mdao.updateMakerTotal(mk.getMnum())==1) {
+				rMap.put("msg", "정상적으로 수정 되었습니다.");
+				rMap.put("success","true");
+			}
+		}
+		return rMap;
 	}
 
 	@Override

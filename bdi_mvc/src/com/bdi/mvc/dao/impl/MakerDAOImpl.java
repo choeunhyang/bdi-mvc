@@ -120,6 +120,30 @@ public class MakerDAOImpl implements MakerDAO {
 
 	@Override
 	public Map<String, Object> updateMaker(Maker mk) {
+		Connection con = DBCon.getCon();
+		PreparedStatement ps = null;
+		String sql = "update maker set "
+				+ "mName=?, mPrice=?, mCnt=?, mDesc=? where mNum=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, mk.getMname());
+			ps.setInt(2, mk.getMprice());
+			ps.setInt(3, mk.getMcnt());
+			ps.setString(4, mk.getMdesc());
+			ps.setInt(5, mk.getMnum());
+			/*return ps.executeUpdate();*/
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null) {
+					ps.close();
+				}
+			}catch(SQLException e) {
+				
+			}
+			DBCon.close();
+		}
 		return null;
 	}
 

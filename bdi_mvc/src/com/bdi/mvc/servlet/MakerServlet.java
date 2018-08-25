@@ -36,9 +36,10 @@ public class MakerServlet extends HttpServlet {
 			String mDesc = request.getParameter("mDesc");
 			Maker mk = new Maker(0,mName,Integer.parseInt(mPrice),Integer.parseInt(mCnt),0,mDesc);
 			request.setAttribute("rMap",ms.insertMaker(mk));			
-		}else if(cmd.equals("updatemaker")) {
-			
-		}else if(cmd.equals("deletemaker")) {
+		}else if(cmd.equals("makerUpdate")) {
+			int mNum = Integer.parseInt(request.getParameter("mNum"));
+			request.setAttribute("maker", ms.getMaker(mNum));
+		}else if(cmd.equals("makerDelete")) {
 			
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(uri);

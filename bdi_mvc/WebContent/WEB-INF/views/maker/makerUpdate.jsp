@@ -10,26 +10,26 @@
 				<td>${maker.mnum}</td>
 			</tr>
 			<tr>
-				<th>메이커명</th>
-				<td><input type="text" name="mname"></td>
+				<th width="30%">메이커명</th>
+				<td><input type="text" name="mName" value="${maker.mname}"></td>
 			</tr>
 			<tr>
 				<th>가격</th>
-				<td>${maker.mprice}</td>
+				<td><input type="number" name="mPrice" value="${maker.mprice}"></td>
 			</tr>
 			<tr>
 				<th>수량</th>
-				<td>${maker.mcnt}</td>
-			</tr>
-			<tr>
-				<th>총액</th>
-				<td>${maker.mprice*maker.mcnt}</td>
+				<td><input type="number" name="mCnt" value="${maker.mcnt}"></td>
 			</tr>
 			<tr>
 				<th>메이커설명</th>
-				<td>${maker.mdesc}</td>
+				<td><input type="text" name="mDesc" value="${maker.mdesc}"></td>
 			</tr>
 		</table>
+		<div>
+			<button data-page='/maker/makerView?mNum=${maker.mnum}'>수정</button>
+			<button data-page='/maker/makerList'>취소</button>
+		</div>
 	</div>
 </body>
 </html>

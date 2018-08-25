@@ -34,21 +34,10 @@
 			<%-- </c:forEach> --%>
 		</table>
 		<div style="text-align:center;">
-			<button data-page='/views/maker/makerInsert'>메이커등록</button>
 			<button data-page='/maker/makerUpdate?mNum=${maker.mnum}'>메이커수정</button>
 			<button data-page='/maker/makerList'>돌아가기</button>
-			<button data-page='/maker/makerDelete?mNum=${maker.mnum}'>메이커삭제</button>
+			<%-- <button data-page='/maker/makerDelete?mNum=${maker.mnum}'>메이커삭제</button> --%>
 		</div>
 	</div>
 </body>
-<script>
-	window.onload = function() {
-		var btns = document.querySelectorAll('button[data-page]');
-		for (var i = 0; i < btns.length; i++) {
-			btns[i].onclick = function(){
-				location.href= this.getAttribute('data-page');
-			}
-		}
-	}
-</script>
 </html>
