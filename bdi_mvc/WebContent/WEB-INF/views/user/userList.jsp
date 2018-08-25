@@ -6,8 +6,8 @@ th, td, h4 {text-align:center}
 </style>
 <body>
 	<div class="container">
+	<h4>유저 리스트</h4>
 		<table class="table table-bordered table-hover">
-			<h4>유저 리스트</h4>
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -19,18 +19,19 @@ th, td, h4 {text-align:center}
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="" var="u">
+			<c:forEach items="${list}" var="u">
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td><a href="/user/userViews?uNum=${u.unum}">${u.unum}</a></td>
+					<td>${u.uname}</td>
+					<td>${u.uid}</td>
+					<td>${u.upwd}</td>
+					<td>${u.udesc}</td>
+					<td>${u.uage}</td>
 				</tr>
 			</c:forEach>
 			</tbody>
 		</table>
+		<button data-page='/user/userInsert'>등록</button>
 	</div>
 </body>
 </html>

@@ -42,9 +42,9 @@
 		<div>
 			<button onclick="makerInsert()">메이커등록</button>
 		</div>
-		<div>
+		<!-- <div>
 			<button align="center">삭제</button>
-		</div>
+		</div> -->
 	</div>
 </body>
 <script>

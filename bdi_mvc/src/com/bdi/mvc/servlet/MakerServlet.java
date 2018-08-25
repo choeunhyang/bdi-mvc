@@ -28,6 +28,8 @@ public class MakerServlet extends HttpServlet {
 		}else if(cmd.equals("makerView") || cmd.equals("makerUpdate")) {
 			int mNum = Integer.parseInt(request.getParameter("mNum"));
 			request.setAttribute("maker", ms.getMaker(mNum));
+		}else if(cmd.equals("makerInsert")) {
+			
 		}else if(cmd.equals("makerUpdate")) {
 			
 		}else if(cmd.equals("makerDelete")) {

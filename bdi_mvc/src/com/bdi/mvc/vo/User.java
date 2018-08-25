@@ -7,7 +7,8 @@ public class User {
 	private String upwd;
 	private String udesc;
 	private int uage;
-	public User(int unum, String uname, String uid, String upwd, String udesc, int uage, int uno) {
+	public User() {}
+	public User(int unum, String uname, String uid, String upwd, String udesc, int uage) {
 		super();
 		this.unum = unum;
 		this.uname = uname;
