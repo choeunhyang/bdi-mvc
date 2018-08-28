@@ -167,10 +167,10 @@ public class MakerDAOImpl implements MakerDAO {
 	public int updateMakerTotal(int mNum) {
 		Connection con = DBCon.getCon();
 		/*String sql = "update maker set mTotal = mCnt * mPrice where mNum=(select max(mNum) from maker)";*/
-		String sql = "update maker set mTotal = mCnt * mPrice where mNum=?";
+		String sql = "update maker set mTotal = mCnt * mPrice where mNum=(select max(mNum) from maker)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1,mNum);
+			/*ps.setInt(1,mNum);*/
 			return ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

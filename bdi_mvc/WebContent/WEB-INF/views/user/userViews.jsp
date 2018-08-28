@@ -2,6 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/common.jsp"%>
 <body>
+<c:if test="${!empty rMap}">
+	<script>
+		alert('${rMap.msg}');
+		if ('${rMap.success}' == 'true') {
+			location.href = '/user/userList';
+		}
+	</script>
+</c:if>
 	<div class="container">
 	<h4>유저 리스트</h4>
 		<table class="table table-bordered table-hover">
@@ -22,6 +30,10 @@
 				<td>${user.upwd}</td>
 			</tr>
 			<tr>
+				<th>비밀번호 확인</th>
+				<td>${user.upwdch}</td>
+			</tr>
+			<tr>
 				<th>유저설명</th>
 				<td>${user.udesc}</td>
 			</tr>
@@ -30,11 +42,12 @@
 				<td>${user.uage}</td>
 			</tr>
 		</table>
-		<!-- <form action="/user/userDelete" method="post" style="text-align:center;"> -->
+		<form action="/user/userDelete" method="post" style="text-align:center;">
 			<button type="button" data-page="/user/userUpdate?uNum=${user.unum}">수정</button>
 			<button type="button" data-page="/user/userList">취소</button>
 			<button>삭제</button>
-		<!-- </form> -->
+			<input type="hidden" name="uNum" value="${user.unum}">
+		</form>
 	</div>
 </body>
 </html>

@@ -26,10 +26,6 @@ public class UserServlet extends HttpServlet {
 		} else if (cmd.equals("userViews") || cmd.equals("userUpdate")) {
 			int uNum = Integer.parseInt(request.getParameter("uNum"));
 			request.setAttribute("user", us.getUser(uNum));
-		} else if (cmd.equals("userInsert")) {
-			
-		} else if (cmd.equals("userDelete")) {
-			
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(uri);
 		rd.forward(request, response);
@@ -43,17 +39,19 @@ public class UserServlet extends HttpServlet {
 		String uName = request.getParameter("uName");
 		String uId = request.getParameter("uId");
 		String uPwd = request.getParameter("uPwd");
+		String uPwdch = request.getParameter("uPwdch");
 		String uDesc = request.getParameter("uDesc");
 		String uAge = request.getParameter("uAge");
 		if (cmd.equals("userInsert")) {
-			User ue = new User(0,uName,uId,uPwd,uDesc,Integer.parseInt(uAge));
+			User ue = new User(0,uName,uId,uPwd,uPwdch,uDesc,Integer.parseInt(uAge));
 			request.setAttribute("rMap", us.insertUser(ue));
 		} else if (cmd.equals("userUpdate")) {
-			User ue = new User(Integer.parseInt(uNum),uName,uId,uPwd,uDesc,Integer.parseInt(uAge));
+			User ue = new User(Integer.parseInt(uNum),uName,uId,uPwd,uPwdch,uDesc,Integer.parseInt(uAge));
 			request.setAttribute("rMap", us.updateUser(ue));
 		} else if (cmd.equals("userDelete")) {
-			
-			uri="/user/userList";
+			User ue = new User(Integer.parseInt(uNum),null,null,null,null,null,0);
+			request.setAttribute("rMap", us.deleteUser(ue));
+			uri="/user/userViews";
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(uri);
 		rd.forward(request, response);

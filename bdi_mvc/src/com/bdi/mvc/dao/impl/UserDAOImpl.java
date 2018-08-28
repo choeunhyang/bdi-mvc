@@ -19,7 +19,7 @@ public class UserDAOImpl implements UserDAO {
 		Connection con = DBCon.getCon();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select uNum, uName, uId, uPwd, uDesc, uAge from user_in";
+		String sql = "select uNum, uName, uId, uPwd, uPwdch, uDesc, uAge from user_in";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -28,6 +28,7 @@ public class UserDAOImpl implements UserDAO {
 						rs.getString("uName"),
 						rs.getString("uId"),
 						rs.getString("uPwd"),
+						rs.getString("uPwdch"),
 						rs.getString("uDesc"),
 						rs.getInt("uAge"));
 				list.add(us);
@@ -54,14 +55,14 @@ public class UserDAOImpl implements UserDAO {
 		Connection con = DBCon.getCon();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select uNum, uName, uId, uPwd, uDesc, uAge from user_in where uNum=?";
+		String sql = "select uNum, uName, uId, uPwd, uPwdch, uDesc, uAge from user_in where uNum=?";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, uNum);
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				User us = new User(rs.getInt("uNum"), rs.getString("uName"), rs.getString("uId"), rs.getString("uPwd"),
-						rs.getString("uDesc"), rs.getInt("uAge"));
+						 rs.getString("uPwdch"),rs.getString("uDesc"), rs.getInt("uAge"));
 				return us;
 			}
 		} catch (SQLException e) {
@@ -85,15 +86,16 @@ public class UserDAOImpl implements UserDAO {
 	public int insertUser(User us) {
 		Connection con = DBCon.getCon();
 		PreparedStatement ps = null;
-		String sql = "insert into user_in "
-				+ "uNum=?, uName=?, uId=?, uPwd=?, uDesc=?, uAge=?";
+		/*String sql = "insert into user_in uName=?, uId=?, uPwd=?, uDesc=?, uAge=?";//이거안됨*/
+		String sql = "insert into user_in(uName, uId, uPwd, uPwdch, uDesc, uAge) values(?,?,?,?,?,?)";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, us.getUname());
 			ps.setString(2, us.getUid());
 			ps.setString(3, us.getUpwd());
-			ps.setString(4, us.getUdesc());
-			ps.setInt(5, us.getUage());
+			ps.setString(4, us.getUpwdch());
+			ps.setString(5, us.getUdesc());
+			ps.setInt(6, us.getUage());
 			return ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -112,13 +114,47 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int updateUser(User us) {
-		// TODO Auto-generated method stub
+		Connection con = DBCon.getCon();
+		PreparedStatement ps = null;
+		String sql = "update user_in set uName=?, uId=?, uPwd=?, uPwdch=?, uDesc=?, uAge=? where uNum=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, us.getUname());
+			ps.setString(2, us.getUid());
+			ps.setString(3, us.getUpwd());
+			ps.setString(4, us.getUpwdch());
+			ps.setString(5, us.getUdesc());
+			ps.setInt(6, us.getUage());
+			ps.setInt(7, us.getUnum());
+			return ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (SQLException e) {
+
+			}
+			DBCon.close();
+		}
 		return 0;
 	}
 
 	@Override
-	public int deleteUser(int us) {
-		// TODO Auto-generated method stub
+	public int deleteUser(User us) {
+		Connection con = DBCon.getCon();
+		String sql = "delete from user_in where uNum=?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, us.getUnum());
+			return ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+		}
 		return 0;
 	}
 

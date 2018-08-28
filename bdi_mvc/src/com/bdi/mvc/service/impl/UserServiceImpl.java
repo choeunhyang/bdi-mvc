@@ -35,19 +35,26 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Map<String, Object> updateUser(User us) {
-		int cnt = mdao.updateUser(us);
+		/*int cnt = mdao.updateUser(us);*/
 		Map<String, Object> rMap = new HashMap<String,Object>();
 		rMap.put("msg","수정오류!");
 		rMap.put("success","false");
-		if(cnt==1) {
+		if(mdao.updateUser(us)==1) {
 			rMap.put("msg","정상 수정 완료!");
 			rMap.put("success","true");
 		}return rMap;
 	}
 
 	@Override
-	public Map<String, Object> deleteUser(int us) {
-		return null;
+	public Map<String, Object> deleteUser(User us) {
+		int cnt = mdao.deleteUser(us);
+		Map<String, Object> rMap = new HashMap<String,Object>();
+		rMap.put("msg","삭제오류!");
+		rMap.put("success","false");
+		if(cnt==1) {
+			rMap.put("msg","정상 삭제 완료!");
+			rMap.put("success","true");
+		}return rMap;
 	}
 
 }

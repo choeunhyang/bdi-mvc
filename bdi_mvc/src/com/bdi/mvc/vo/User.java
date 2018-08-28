@@ -5,15 +5,17 @@ public class User {
 	private String uname;
 	private String uid;
 	private String upwd;
+	private String upwdch;
 	private String udesc;
 	private int uage;
 	public User() {}
-	public User(int unum, String uname, String uid, String upwd, String udesc, int uage) {
+	public User(int unum, String uname, String uid, String upwd, String upwdch, String udesc, int uage) {
 		super();
 		this.unum = unum;
 		this.uname = uname;
 		this.uid = uid;
 		this.upwd = upwd;
+		this.upwdch = upwdch;
 		this.udesc = udesc;
 		this.uage = uage;
 	}
@@ -41,6 +43,12 @@ public class User {
 	public void setUpwd(String upwd) {
 		this.upwd = upwd;
 	}
+	public String getUpwdch() {
+		return upwd;
+	}
+	public void setUpwdch(String upwdch) {
+		this.upwdch = upwdch;
+	}
 	public String getUdesc() {
 		return udesc;
 	}
@@ -55,7 +63,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [unum=" + unum + ", uname=" + uname + ", uid=" + uid + ", upwd=" + upwd + ", udesc=" + udesc
+		return "User [unum=" + unum + ", uname=" + uname + ", uid=" + uid + ", upwd=" + upwd + ", upwdch=" + upwdch + ", udesc=" + udesc
 				+ ", uage=" + uage + "]";
 	}
 }

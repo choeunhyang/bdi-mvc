@@ -4,14 +4,14 @@
 <style>
 	th,td{text-align:center;}
 </style>
-<c:if test="${!empty rMap}">
+<%-- <c:if test="${!empty rMap}">
 <script>
 	alert('${rMap.msg}');
 	if('${rMap.success}'=='true'){
 		location.href='/maker/makerList';
 	}
 </script>
-</c:if>
+</c:if> --%>
 <body>
 	<div class="container">
 		<h4 align="center">메이커리스트</h4>
