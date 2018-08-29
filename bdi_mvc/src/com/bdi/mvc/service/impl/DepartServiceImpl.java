@@ -44,4 +44,16 @@ public class DepartServiceImpl implements DepartService {
 		}
 	}
 
+	@Override
+	public Depart selectDepart(Depart depart) throws SQLException {
+		ddao.setConnection(DBCon.getCon());
+		try {
+			return ddao.selectDepart(depart);
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			DBCon.close();
+		}
+	}
+
 }

@@ -19,14 +19,16 @@ public class DepartServlet extends HttpServlet {
 	private DepartService ds = new DepartServiceImpl();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uri = request.getRequestURI();
+		String uri = "/views" + request.getRequestURI();
 		String cmd = uri.substring(uri.lastIndexOf("/") + 1);
 		try {
 			if (cmd.equals("departList")) {
-				uri = "/views" + uri;
 				request.setAttribute("departList", ds.selectDepartList(null));
-			} else {
-
+			} else if (cmd.equals("departView")) {
+				String diNoStr = request.getParameter("diNo");
+				Depart depart = new Depart();
+				depart.setDiNo(Integer.parseInt(diNoStr));
+				request.setAttribute("depart",ds.selectDepart(depart));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

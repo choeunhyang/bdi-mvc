@@ -10,5 +10,6 @@ public interface DepartDAO {
 	
 	public void setConnection(Connection con);
 	public List<Depart> selectDepartList(Depart depart)throws SQLException;
+	public Depart selectDepart(Depart depart)throws SQLException;
 	public int insertDepart(Depart depart)throws SQLException;
 }
