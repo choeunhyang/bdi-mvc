@@ -22,7 +22,11 @@
 			</tr>
 		</table>
 		<div>
-			<button>수정</button>
+		<form action="/depart/departDelete" method="post">
+			<button data-page="/depart/departUpdate?diNo=${depart.diNo}">수정</button>
+			<button>삭제</button>
+			<input type="hidden" name="diNo" value="${depart.diNo}">
+		</form>
 		</div>
 	</div>
 </body>

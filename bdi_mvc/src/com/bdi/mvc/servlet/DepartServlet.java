@@ -24,7 +24,7 @@ public class DepartServlet extends HttpServlet {
 		try {
 			if (cmd.equals("departList")) {
 				request.setAttribute("departList", ds.selectDepartList(null));
-			} else if (cmd.equals("departView")) {
+			} else if (cmd.equals("departView")||cmd.equals("departUpdate")) {
 				String diNoStr = request.getParameter("diNo");
 				Depart depart = new Depart();
 				depart.setDiNo(Integer.parseInt(diNoStr));
@@ -41,16 +41,19 @@ public class DepartServlet extends HttpServlet {
 		String uri = "/views" + request.getRequestURI();
 		String cmd = uri.substring(uri.lastIndexOf("/") + 1);
 		request.setCharacterEncoding("utf-8");
+		String diName = request.getParameter("diName");
+		String diDesc = request.getParameter("diDesc");
 		try {
 			if (cmd.equals("departInsert")) {
-				String diName = request.getParameter("diName");
-				String diDesc = request.getParameter("diDesc");
 				Depart depart = new Depart(null, diName, diDesc, null);
 				request.setAttribute("rMap", ds.insertDepart(depart));
 			} else if(cmd.equals("departUpdate")){
-
+				Depart depart = new Depart(Integer.parseInt(request.getParameter("diNo")),diName,diDesc,null);
+				request.setAttribute("rMap", ds.updateDepart(depart));
 			} else if(cmd.equals("departDelete")){
-				
+				Depart depart = new Depart(Integer.parseInt(request.getParameter("diNo")),null,null,null);
+				request.setAttribute("rMap", ds.deleteDepart(depart));
+				/*uri = "/depart/deparList";*/
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
