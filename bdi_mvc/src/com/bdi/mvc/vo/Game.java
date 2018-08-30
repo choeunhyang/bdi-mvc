@@ -5,18 +5,18 @@ public class Game {
 	private String gcName;
 	private Integer gcPrice;
 	private String gcVendor;
-	private Integer gcOder;
+	private Integer gcOrder;
 	private String gcDesc;
 	private String gcImg;
 	public Game() {};
-	public Game(Integer gcNum, String gcName, Integer gcPrice, String gcVendor, Integer gcOder, String gcDesc,
+	public Game(Integer gcNum, String gcName, Integer gcPrice, String gcVendor, Integer gcOrder, String gcDesc,
 			String gcImg) {
 		super();
 		this.gcNum = gcNum;
 		this.gcName = gcName;
 		this.gcPrice = gcPrice;
 		this.gcVendor = gcVendor;
-		this.gcOder = gcOder;
+		this.gcOrder = gcOrder;
 		this.gcDesc = gcDesc;
 		this.gcImg = gcImg;
 	}
@@ -44,11 +44,11 @@ public class Game {
 	public void setGcVendor(String gcVendor) {
 		this.gcVendor = gcVendor;
 	}
-	public Integer getGcOder() {
-		return gcOder;
+	public Integer getGcOrder() {
+		return gcOrder;
 	}
-	public void setGcOder(Integer gcOder) {
-		this.gcOder = gcOder;
+	public void setGcOrder(Integer gcOrder) {
+		this.gcOrder = gcOrder;
 	}
 	public String getGcDesc() {
 		return gcDesc;
@@ -65,7 +65,7 @@ public class Game {
 	@Override
 	public String toString() {
 		return "Game [gcNum=" + gcNum + ", gcName=" + gcName + ", gcPrice=" + gcPrice + ", gcVendor=" + gcVendor
-				+ ", gcOder=" + gcOder + ", gcDesc=" + gcDesc + ", gcImg=" + gcImg + "]";
+				+ ", gcOrder=" + gcOrder + ", gcDesc=" + gcDesc + ", gcImg=" + gcImg + "]";
 	}
 	
 }
