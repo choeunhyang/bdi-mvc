@@ -26,10 +26,6 @@
 					<td><input type="text" name="gcVendor"></td>
 				</tr>
 				<tr>
-					<th>게임순위</th>
-					<td><input type="number" name="gcOrder"></td>
-				</tr>
-				<tr>
 					<th>게임설명</th>
 					<td><input type="text" name="gcDesc"></td>
 				</tr>

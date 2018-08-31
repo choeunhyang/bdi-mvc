@@ -1,12 +1,16 @@
 package com.bdi.mvc.servlet;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 public class FileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
@@ -27,12 +31,12 @@ public class FileServlet extends HttpServlet {
 //			writer.newLine();
 //		}
 //		writer.close();
-		//String data = buffer.toString();
+//		String data = buffer.toString();
 		
-		UploadFiles.saveFileList(req);
-		res.setContentType("text/html;charset=utf-8");
-		PrintWriter pw = res.getWriter();
-		pw.write("저장 성공");
+		/*UploadFiles.saveFileList(request);
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter pw = response.getWriter();
+		pw.write("저장 성공");*/
 	}
 
 }

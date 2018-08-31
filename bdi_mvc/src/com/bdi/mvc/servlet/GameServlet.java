@@ -53,7 +53,7 @@ public class GameServlet extends HttpServlet {
 		String gcImg = request.getParameter("gcImg");
 		try {
 			if (cmd.equals("gameInsert")) {
-				Game game = new Game(null,gcName, Integer.parseInt(gcPrice), gcVendor, Integer.parseInt(gcOrder), gcDesc, null);
+				Game game = new Game(null,gcName, Integer.parseInt(gcPrice), gcVendor, null, gcDesc, null);
 				request.setAttribute("rMap", gs.insertGame(game));
 			} else if (cmd.equals("gameUpdate")) {
 				Game game = new Game(Integer.parseInt(gcNum),gcName, Integer.parseInt(gcPrice), gcVendor, Integer.parseInt(gcOrder), gcDesc, gcImg);
