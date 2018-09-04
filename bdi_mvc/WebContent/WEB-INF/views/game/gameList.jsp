@@ -24,7 +24,11 @@
 						<td>${game.gcVendor}</td>
 						<td>${game.gcOrder}</td>
 						<td>${game.gcDesc}</td>
-						<td>${game.gcImg}</td>
+						<td>
+							<c:if test="${!empty game.gcImg}">
+								<img src="${game.gcImg}" width="50px" height="50px">
+							</c:if>
+						</td>
 					</tr>
 				</tbody>
 			</c:forEach>
