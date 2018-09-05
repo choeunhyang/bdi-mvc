@@ -64,7 +64,7 @@ public class GameServlet extends HttpServlet {
 				/*request.setAttribute("rMap", gs.insertGame(game));*/
 				//게임서비스에서 game목록을 인서트 함수를 호출해준다.
 				Map<String,Object> rMap = gs.insertGame(game);
-				//해당 리스트를 포워딩할 jsp에서 포문을 돌리며 출력해주기위해
+				//해당 리스트를 포워딩할 jsp에서 for문을 돌리며 출력해주기위해
 				//rMap라는 키값을 저장한다.
 				request.setAttribute("rMap", rMap);
 			} else if (cmd.equals("gameUpdate")) {
